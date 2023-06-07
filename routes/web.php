@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(function () {
     Route::get("/", [DashboardController::class, "index"])->name("dashboard");
+    Route::resource("/profile", ProfileController::class);
 });
 
 // Route::get('/dashboard', function () {

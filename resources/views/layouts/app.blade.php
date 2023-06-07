@@ -20,10 +20,11 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" onclick="window.alFunc.removeMenusHandler(event)">
 
-        @include("layouts.partials.header");
-        
+        {{-- @include("layouts.partials.header") --}}
+        @include("layouts.partials.header")
+
         <main class="">
             @yield('content')
         </main>
