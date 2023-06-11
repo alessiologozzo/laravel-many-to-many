@@ -56,8 +56,6 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request)
     {
-        // dd($request->profile_image);
-        
         $user = auth()->user();
         $validated = $request->validated();
         
@@ -72,7 +70,7 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return redirect()->route("admin.profile.index", $user)->with("mex", "Profilo aggiornato!");
+        return redirect()->route("admin.profile.index", $user)->with("mex", "Profilo aggiornato con successo!");
     }
 
     /**

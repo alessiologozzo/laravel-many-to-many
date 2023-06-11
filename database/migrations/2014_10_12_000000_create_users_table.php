@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string("nationality", 50)->nullable()->default(null);
             $table->string("city", 50)->nullable()->default(null);
             $table->string("address", 50)->nullable()->default(null);
-            $table->boolean("privacy_hidden")->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

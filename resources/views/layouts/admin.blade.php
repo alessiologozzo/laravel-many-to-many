@@ -24,8 +24,13 @@
 
         @include("partials.topbar")
 
-        <main class="">
-            @yield('content')
+        <main class="d-flex">
+
+            @include("partials.sidebar")
+            
+            <div class="main-content">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,19 @@ Route::get('/', function () {
 })->name("home");
 
 Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(function () {
-    Route::get("/", [DashboardController::class, "index"])->name("dashboard");
-    Route::resource("/profile", ProfileController::class);
+    Route::get("/", [ProjectController::class, "index"])->name("dashboard");
+
+    // Route::resource("/project", ProfileController::class);
+    Route::get("/project/{name}", [ProjectController::class, "index"])->name("project.index");
+    Route::delete("/project/delete/{id}", [ProjectController::class, "destroy"])->name("project.destroy");
+
+    Route::get("/profile/{name}", [ProfileController::class, "index"])->name("profile.index");
+    Route::put("/profile/update", [ProfileController::class, "update"])->name("profile.update");
+
+    Route::get("/account/{name}", [AccountController::class, "index"])->name("account.index");
+    Route::put("/account/update", [AccountController::class, "update"])->name("account.update");
+    Route::delete("/account/destroy", [AccountController::class, "destroy"])->name("account.destroy");
+    
 });
 
 // Route::get('/dashboard', function () {
