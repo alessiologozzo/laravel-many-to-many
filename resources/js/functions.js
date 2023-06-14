@@ -49,8 +49,8 @@ export function resizeSidebar() {
     }
 }
 
-export function edit($event, index) {
-    let parent = $event.currentTarget.closest(".justify-content-between");
+export function edit(event, index) {
+    let parent = event.currentTarget.closest(".justify-content-between");
 
     let firstChild = parent.querySelector("div:nth-child(1)");
     let secondChild = parent.querySelector("div:nth-child(2)");
@@ -160,4 +160,42 @@ export function submitForm(e) {
 export function submitFormIndex(index){
     let form = document.getElementsByTagName("form")[index];
     form.submit();
+}
+
+export function removeBadge(e, technologyName){
+    let badge = e.currentTarget;
+    let technologiesList = document.getElementById("technologiesList");
+    
+    technologiesList.value = technologiesList.value.replace(technologyName, "");
+    badge.classList.add("d-none");
+}
+
+export function addTechnology(technologyName, backgroundClass){
+    let technologiesWrapper = document.getElementById("technologiesWrapper");
+    let alreadyPresent = false;
+    let noTechErr = document.getElementById("noTechErr");
+
+    if(noTechErr != null)
+        if(!noTechErr.classList.contains("d-none"))
+            noTechErr.classList.add("d-none");
+
+    for(let technologyElement of technologiesWrapper.children)
+        if(technologyName == technologyElement.dataset.value && !technologyElement.classList.contains("d-none"))
+            alreadyPresent = true;
+
+    if(!alreadyPresent){
+        let newTechnology = document.createElement("div");
+        newTechnology.classList.add("badge", backgroundClass, "badge-hover-remove");
+        newTechnology.dataset.value = technologyName;
+        newTechnology.addEventListener("click", (e) => window.Func.removeBadge(e, technologyName) );
+        newTechnology.textContent = technologyName;
+        technologiesWrapper.appendChild(newTechnology);
+
+        technologiesList.value += (" " + technologyName);
+    }
+}
+
+export function toggleAddTechnologiesWrapper(){
+    let addTechnologiesWrapper = document.getElementById("addTechnologiesWrapper");
+    addTechnologiesWrapper.classList.toggle("d-none");
 }

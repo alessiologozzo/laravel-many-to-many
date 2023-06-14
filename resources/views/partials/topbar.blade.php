@@ -1,7 +1,11 @@
 <header>
-    <a href="{{ url('/') }}" class="pe-5">
-        <img class="logo" src="{{ Vite::asset('resources/img/logo.png') }}" alt="logo">
-    </a>
+    <div class="d-flex align-items-center gap-2 pe-5">
+        <a href="{{ url('/') }}">
+            <img class="logo" src="{{ Vite::asset('resources/img/logo.png') }}" alt="logo">
+        </a>
+
+        <a href="{{ url('/') }}" class="d-none d-md-block">Home</a>
+    </div>
 
     <div class="d-flex gap-3">
         @guest
@@ -18,7 +22,8 @@
                         <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="err" class="al-profile-image">
                     @endif
                     
-                    <i class="d-none d-md-block">{{ Auth::user()->name }}</i>
+                    <i class="d-none d-md-block d-lg-none">{{ Str::limit(Auth::user()->name, 20, '...') }}</i>
+                    <i class="d-none d-lg-block">{{ Str::limit(Auth::user()->name, 40, '...') }}</i>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete();
             $table->string("name", 100);
             $table->text("description");
+            $table->string("slug")->default("remember-to-set-the-slug");
             $table->timestamps();
         });
     }

@@ -81,10 +81,10 @@ aside {
     }
 
     .sidebar-resizer {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        min-height: 40px;
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        min-height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -101,7 +101,7 @@ aside {
         }
 
         i {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
         }
 
         @media screen and (min-width: 768px) {
@@ -117,6 +117,7 @@ aside {
 .main-content {
     width: calc(100vw - $aside_width);
     height: calc(100vh - $header_height);
+    position: relative;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1.5rem;
@@ -183,7 +184,7 @@ aside {
 
 .al-form {
     background-color: rgb(66, 52, 26);
-    ;
+    margin-bottom: 0;
     border: 1px solid black;
     border-radius: 4px;
     padding: 1.5rem;
@@ -214,7 +215,8 @@ aside {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+textarea {
     padding: 0.3rem;
     background-color: white;
     color: black;
@@ -230,6 +232,10 @@ input[type="file"] {
     color: white;
     width: 100%;
     max-width: 600px;
+}
+
+textarea {
+    resize: none;
 }
 
 ::placeholder {
@@ -302,15 +308,115 @@ input[type="file"] {
     border: 1px solid rgb(255, 58, 58);
 }
 
-label{
+label {
     cursor: pointer;
 }
 
+.al-bg-orange {
+    background-color: #ef8d1d;
+}
 
+.al-bg-violet {
+    background-color: #7952b3;
+}
 
+.badge-hover-remove, .badge-hover-add {
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: black;
+        opacity: 0;
+        border-radius: $border-radius;
+        transition: opacity 300ms;
+    }
+
+    &::after{
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.2rem;
+        content: "\f00d";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #dc3545;
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+
+    &:hover::before{
+        opacity: 0.75;
+    }
+
+    &:hover::after{
+        opacity: 1;
+    }
+}
+
+.badge-hover-add{
+    &::after{
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.2rem;
+        content: "\2b";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: lightgreen;
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+}
+.al-plus{
+    padding: 0.1rem 0.5rem;
+    font-size: 1.2rem;
+    background-color: lightgreen;
+    color: black;
+    // border: 1px solid gold;
+    border-radius: 5px;
+    transition: transform 300ms;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+select{
+    background-color: red;
+
+    option{
+        min-height: 200px;
+    }
+}
+
+.tech-wrapper-p::after{
+    content: "";
+    padding-bottom: calc($spacer * 1.25);
+}
+
+.add-project-plus{
+    font-size: 3rem;
+    color: lightgreen;
+    transition: transform 300ms;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.text-lightgreen{
+    color: lightgreen;
+}
 
 .al-menu {
-    transform-origin: top right;
+    // transform-origin: top right;
     transform: scale(0);
     position: absolute;
     right: 0;

@@ -11,7 +11,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ["name", "description"];
 
 
     public function technologies(): BelongsToMany
@@ -22,5 +22,10 @@ class Project extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 }

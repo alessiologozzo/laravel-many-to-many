@@ -1,6 +1,36 @@
 <?php
 return [
-    "technologies" => ["HTML", "CSS", "JavaScript", "Vue", "PHP", "Laravel"],
+    "technologies" => [
+        [
+            "name" => "HTML",
+            "bg_color" => "bg-primary"
+        ],
+
+        [
+            "name" => "CSS",
+            "bg_color" => "bg-danger"
+        ],
+
+        [
+            "name" => "JavaScript",
+            "bg_color" => "bg-warning"
+        ],
+
+        [
+            "name" => "Vue",
+            "bg_color" => "bg-info"
+        ],
+
+        [
+            "name" => "PHP",
+            "bg_color" => "al-bg-orange"
+        ],
+
+        [
+            "name" => "Laravel",
+            "bg_color" => "al-bg-violet"
+        ]
+    ],
 
     "projects" => [
         [

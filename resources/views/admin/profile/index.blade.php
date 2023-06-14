@@ -254,7 +254,7 @@
                             <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="err"
                                 class="al-profile-image">
                         @else
-                            <h4 class="al-opacity">Nessun immagine del profilo inserita</h4>
+                            <h4 class="al-opacity">Nessuna immagine del profilo inserita</h4>
                         @endif
                     </div>
 

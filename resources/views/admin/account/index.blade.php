@@ -1,8 +1,35 @@
 @extends('layouts.admin')
 
+
+<div class="al-confirm d-none">
+    <div class="d-flex flex-column">
+        <span>Sicuro di voler cancellare il tuo account? Questa azione è <strong class="text-danger">irreversibile</strong></span>
+        <label for="password" class="pt-3 pb-1">Inserisci la tua password per proseguire</label>
+
+        <form action="{{Route('admin.account.destroy')}}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <input type="password" name="password" id="password" placeholder="Password...">
+        </form>
+    </div>
+    
+    <div class="d-flex justify-content-center align-items-center gap-4 pt-4">
+        <div onclick="window.Func.removeConfirmElement()" class="al-round al-red">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div onclick="window.Func.submitForm(event)" class="al-round al-green">
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+    </div>
+</div>
+
+
+
 @section('content')
 
-<div class="pb-5 position-relative">
+<div class="pb-5">
 
     @if (session()->has('mex'))
         <div class="al-mex">
@@ -23,32 +50,8 @@
     @endif
 
 
-    <div class="al-confirm d-none">
-        <div class="d-flex flex-column">
-            <span>Sicuro di voler cancellare il tuo account? Questa azione è <strong class="text-danger">irreversibile</strong></span>
-            <label for="password" class="pt-3 pb-1">Inserisci la tua password per proseguire</label>
 
-            <form action="{{Route('admin.account.destroy')}}" method="POST">
-                @csrf
-                @method('DELETE')
-
-                <input type="password" name="password" id="password" placeholder="Password...">
-            </form>
-        </div>
-        
-        <div class="d-flex justify-content-center align-items-center gap-4 pt-4">
-            <div onclick="window.Func.removeConfirmElement()" class="al-round al-red">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-            <div onclick="window.Func.submitForm(event)" class="al-round al-green">
-                <i class="fa-solid fa-check"></i>
-
-            </div>
-        </div>
-    </div>
-
-
-    <form action="{{ route('admin.account.update') }}" method="POST" class="al-form pt-4">
+    <form action="{{ route('admin.account.update') }}" method="POST" class="al-form">
         @csrf
         @method('PUT')
 
@@ -159,7 +162,7 @@
 
 
                 <div class="pt-3">
-                    <input type="password" name="password" placeholder="Password..." value="">
+                    <input type="password" name="password" placeholder="Password..." value="" class="form-control @if(session()->has('error')) is-invalid @endif">
                 </div>
 
                 @if (session()->has('error'))

@@ -17,7 +17,8 @@ class TechnologiesTableSeeder extends Seeder
 
         foreach($technologies as $technology){
             $newTechnology = new Technology();
-            $newTechnology->name = $technology;
+            $newTechnology->name = $technology["name"];
+            $newTechnology->bg_color = $technology["bg_color"];
             $newTechnology->save(); 
         }
     }

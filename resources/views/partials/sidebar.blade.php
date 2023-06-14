@@ -17,7 +17,7 @@
         <span class="d-none d-md-block">Account</span>
     </a>
 
-    <a href="{{Route('admin.profile.index', Auth::user()->name)}}" class="d-flex align-items-center gap-2 py-3 px-3">
+    <a href="{{Route('admin.profile.index', Auth::user()->name)}}" class="d-flex align-items-center gap-2 py-3 px-3 mb-4">
         <i class="fa-solid fa-user"></i>
         <span class="d-none d-md-block">Profilo</span>
     </a>
